@@ -8,4 +8,6 @@ interface BreakingBadRepositoryInterface {
 
     suspend fun getBreakingBadFromApi(): Resource<Actor>
 
+    suspend fun getList(): ArrayList<Actor>
+
 }

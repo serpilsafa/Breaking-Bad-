@@ -33,6 +33,7 @@ class BreakingBadCharactersFragment @Inject constructor(
         fragmentBinding = FragmentBreakingBadCharactersBinding.bind(view)
         viewModel.getList()
 
+
         fragmentBinding?.searchImageView?.setOnClickListener {
             findNavController().navigate(BreakingBadCharactersFragmentDirections.actionBreakingBadCharactersFragmentToBreakingBadCharacterDetailsFragment())
         }
@@ -45,19 +46,9 @@ class BreakingBadCharactersFragment @Inject constructor(
     }
 
     private fun observers(){
-        viewModel.charactersList.observe(viewLifecycleOwner, Observer {
-            when(it.status){
-                Status.SUCCESS ->{
-                    val nickname = it.data?.nickname
-                    Toast.makeText(requireContext(),it.message ?: "downloanded", Toast.LENGTH_LONG).show()
-                    print("nickname : ${nickname}")
-                }
 
-                Status.ERROR -> {
-                    Toast.makeText(requireContext(),it.message ?: "Error", Toast.LENGTH_LONG).show()
-                }
-            }
-            //adapter.breakingBadList = it.toString()
+        viewModel.breakingBadList.observe(viewLifecycleOwner, Observer {
+            adapter.breakingBadList = it
         })
     }
 

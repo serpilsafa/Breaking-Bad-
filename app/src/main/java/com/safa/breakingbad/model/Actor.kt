@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.safa.breakingbad.data.Converters
 
@@ -21,10 +22,12 @@ data class Actor(
     val status: String,
     val nickname: String,
 
+    @Expose
     val appearance: ArrayList<String>,
     val portrayed: String,
     val category: String,
 
+    @Expose
     @SerializedName("better_call_saul_appearance")
     val betterCallSaulAppearance: ArrayList<String>
 )

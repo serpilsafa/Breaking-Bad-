@@ -28,5 +28,9 @@ class BreakingBadRepository @Inject constructor(
         }
     }
 
+    override suspend fun getList(): ArrayList<Actor> {
+        return retrofitApi.getActors()
+    }
+
 
 }
