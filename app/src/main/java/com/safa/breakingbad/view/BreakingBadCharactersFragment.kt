@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -30,7 +31,7 @@ class BreakingBadCharactersFragment @Inject constructor(
 
         viewModel = ViewModelProvider(requireActivity()).get(BreakingBadViewModel::class.java)
         fragmentBinding = FragmentBreakingBadCharactersBinding.bind(view)
-        viewModel.getDataFromApi()
+        viewModel.getList()
 
         fragmentBinding?.searchImageView?.setOnClickListener {
             findNavController().navigate(BreakingBadCharactersFragmentDirections.actionBreakingBadCharactersFragmentToBreakingBadCharacterDetailsFragment())
@@ -48,7 +49,12 @@ class BreakingBadCharactersFragment @Inject constructor(
             when(it.status){
                 Status.SUCCESS ->{
                     val nickname = it.data?.nickname
+                    Toast.makeText(requireContext(),it.message ?: "downloanded", Toast.LENGTH_LONG).show()
                     print("nickname : ${nickname}")
+                }
+
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(),it.message ?: "Error", Toast.LENGTH_LONG).show()
                 }
             }
             //adapter.breakingBadList = it.toString()

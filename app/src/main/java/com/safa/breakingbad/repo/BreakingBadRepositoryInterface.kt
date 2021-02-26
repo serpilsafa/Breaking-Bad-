@@ -8,7 +8,4 @@ interface BreakingBadRepositoryInterface {
 
     suspend fun getBreakingBadFromApi(): Resource<Actor>
 
-    fun getBreakingBadCharacters(): LiveData<List<Actor>>
-
-
 }

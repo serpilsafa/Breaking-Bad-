@@ -15,13 +15,9 @@ class BreakingBadViewModel @ViewModelInject constructor(
     application: Application
 ): BaseViewModel(application) {
 
-  //  val breakingBadCharacterList = MutableLiveData<Resource<Actor>>()
-
     private val characters = MutableLiveData<Resource<Actor>>()
-
     val charactersList : LiveData<Resource<Actor>>
         get() = characters
-
 
     fun getList(){
       characters.value = Resource.loading(null)
@@ -31,10 +27,5 @@ class BreakingBadViewModel @ViewModelInject constructor(
         }
 
     }
-
-     fun getDataFromApi(){
-        repository.getBreakingBadCharacters()
-    }
-
 
 }

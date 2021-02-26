@@ -13,12 +13,6 @@ class BreakingBadRepository @Inject constructor(
     private val retrofitApi: ActorRetrofitAPI
 ): BreakingBadRepositoryInterface {
 
-
-    override fun getBreakingBadCharacters(): LiveData<List<Actor>> {
-        return breakingBadDao.getAll()
-    }
-
-
     override suspend fun getBreakingBadFromApi(): Resource<Actor> {
         return try {
             val response = retrofitApi.getActor()

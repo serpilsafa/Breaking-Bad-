@@ -16,14 +16,15 @@ data class Actor(
     val name: String,
     val birthday: String,
 
-   // val occupation: List<String>,
+    val occupation: ArrayList<String>,
     val img: String,
     val status: String,
     val nickname: String,
-    //val appearance: List<Int>,
+
+    val appearance: ArrayList<String>,
     val portrayed: String,
     val category: String,
 
-   // @SerializedName("better_call_saul_appearance")
-   // val betterCallSaulAppearance: List<Int>
+    @SerializedName("better_call_saul_appearance")
+    val betterCallSaulAppearance: ArrayList<String>
 )
