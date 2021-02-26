@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="NameStyle">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/name_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="NameDetailStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/detail_name_text_size</item>
+        <item name="android:layout_marginTop">@dimen/detail_name_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/detail_name_margin_bottom</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/design_default_color_primary_variant</item>
+
+    </style>
+
+    <style name="DetailStyle">
+        <item name="android:padding">2dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/detail_size</item>
+    </style>
+</resources>

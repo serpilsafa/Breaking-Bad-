@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/breakingBadCharactersFragment">
+
+    <fragment
+        android:id="@+id/breakingBadCharactersFragment"
+        android:name="com.safa.breakingbad.view.BreakingBadCharactersFragment"
+        android:label="fragment_breaking_bad_characters"
+        tools:layout="@layout/fragment_breaking_bad_characters" >
+        <action
+            android:id="@+id/action_breakingBadCharactersFragment_to_breakingBadCharacterDetailsFragment"
+            app:destination="@id/breakingBadCharacterDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/breakingBadCharacterDetailsFragment"
+        android:name="com.safa.breakingbad.view.BreakingBadCharacterDetailsFragment"
+        android:label="fragment_breaking_bad_character_details"
+        tools:layout="@layout/fragment_breaking_bad_character_details" />
+</navigation>
