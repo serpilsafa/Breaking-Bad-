@@ -18,8 +18,8 @@ interface BreakingBadDao {
    @Query("SELECT * FROM breakingbad WHERE id=:id")
     suspend fun findById(id: Int): Actor
 
-    @Query("SELECT * FROM breakingbad WHERE name LIKE :name")
-    suspend fun findByName(name: String): List<Actor>
+    @Query("SELECT * FROM breakingbad WHERE name LIKE '%' || :search || '%'")
+    suspend fun findByName(search: String?): List<Actor>
 
 
     @Query("DELETE FROM breakingbad")

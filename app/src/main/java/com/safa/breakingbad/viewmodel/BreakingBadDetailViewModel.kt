@@ -18,9 +18,7 @@ class BreakingBadDetailViewModel @ViewModelInject constructor (
     fun showCharcter(id: Int){
         launch {
             val actor = database.breakingBadDao().findById(id)
-            println("actor: ${actor}")
             character.value = actor
-
         }
     }
 }

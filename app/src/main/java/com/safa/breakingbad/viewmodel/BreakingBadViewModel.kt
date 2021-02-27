@@ -19,6 +19,7 @@ class BreakingBadViewModel @ViewModelInject constructor(
 ): BaseViewModel(application) {
 
     val breakingBadList = MutableLiveData<ArrayList<Actor>>()
+    val breakingBadSearchedList = MutableLiveData<List<Actor>>()
 
 
     fun getList(){
@@ -28,15 +29,20 @@ class BreakingBadViewModel @ViewModelInject constructor(
 
             val dao = database.breakingBadDao()
             dao.deleteAll()
-            val insertData = dao.insertAll(*response.toTypedArray())
-            /*
-            if (insertData.size > 0){
-                Toast.makeText(getApplication(), "Succes db", Toast.LENGTH_SHORT).show()
+            dao.insertAll(*response.toTypedArray())
+        }
+    }
+
+    fun getSearchedCharacters(text: String){
+        launch {
+            if (text.isEmpty()){
+                val characterList:List<Actor> = database.breakingBadDao().findByName(text)
+                breakingBadSearchedList.value = characterList
             }else{
-                Toast.makeText(getApplication(), "db doesn't work", Toast.LENGTH_SHORT).show()
+                val characterList:List<Actor> = database.breakingBadDao().getAll()
+                breakingBadSearchedList.value = characterList
             }
 
-             */
         }
     }
 

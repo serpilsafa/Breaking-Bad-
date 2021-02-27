@@ -40,7 +40,7 @@ class BreakingBadAdapter @Inject constructor(
         set(value) = recyclerViewDiffer.submitList(value)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreakingBadViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.breaking_bad_recyclerview_row, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.breaking_bad_recyclerview_row, parent, false)
         return BreakingBadViewHolder(view)
     }
 
@@ -58,7 +58,7 @@ class BreakingBadAdapter @Inject constructor(
         }
 
         rowLayout.setOnClickListener {
-            var actorId: Int = it.tag as Int
+            val actorId: Int = it.tag as Int
             val action = BreakingBadCharactersFragmentDirections.actionBreakingBadCharactersFragmentToBreakingBadCharacterDetailsFragment(actorId)
             Navigation.findNavController(it).navigate(action)
         }
@@ -68,5 +68,9 @@ class BreakingBadAdapter @Inject constructor(
         return breakingBadList.size
     }
 
+    fun updateCharacterList(newCharacterList: List<Actor>) {
+        breakingBadList = newCharacterList
+        notifyDataSetChanged()
+    }
 
 }

@@ -15,9 +15,9 @@ import javax.inject.Inject
 
 class BreakingBadCharactersFragment @Inject constructor(
     val adapter: BreakingBadAdapter
-): Fragment(R.layout.fragment_breaking_bad_characters) {
+) : Fragment(R.layout.fragment_breaking_bad_characters) {
 
-    private var fragmentBinding : FragmentBreakingBadCharactersBinding? = null
+    private var fragmentBinding: FragmentBreakingBadCharactersBinding? = null
     lateinit var viewModel: BreakingBadViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,18 +27,25 @@ class BreakingBadCharactersFragment @Inject constructor(
         fragmentBinding = FragmentBreakingBadCharactersBinding.bind(view)
         viewModel.getList()
 
-
         fragmentBinding?.breakingBadRecyclerView?.adapter = adapter
-        fragmentBinding?.breakingBadRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
-
+        fragmentBinding?.breakingBadRecyclerView?.layoutManager =
+            LinearLayoutManager(requireContext())
 
         observers()
+
+        fragmentBinding?.searchImageView?.setOnClickListener {
+            val searchText: String = fragmentBinding?.characterSearchText?.text.toString()
+            viewModel.getSearchedCharacters(searchText)
+        }
     }
 
-    private fun observers(){
-
+    private fun observers() {
         viewModel.breakingBadList.observe(viewLifecycleOwner, Observer {
             adapter.breakingBadList = it
+        })
+
+        viewModel.breakingBadSearchedList.observe(viewLifecycleOwner, Observer {
+            adapter.updateCharacterList(it)
         })
     }
 
