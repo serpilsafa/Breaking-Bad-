@@ -4,13 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.safa.breakingbad.R
 import com.safa.breakingbad.model.Actor
+import com.safa.breakingbad.view.BreakingBadCharactersFragmentDirections
 import javax.inject.Inject
 
 class BreakingBadAdapter @Inject constructor(
@@ -44,15 +47,26 @@ class BreakingBadAdapter @Inject constructor(
     override fun onBindViewHolder(holder: BreakingBadViewHolder, position: Int) {
         val imageView = holder.itemView.findViewById<ImageView>(R.id.characterImage)
         val nameText = holder.itemView.findViewById<TextView>(R.id.chracNameText)
+        val rowLayout = holder.itemView.findViewById<LinearLayout>(R.id.rowLayout)
+
 
         val character = breakingBadList[position]
         holder.itemView.apply {
             nameText.text = character.name
             glide.load(character.img).into(imageView)
+            rowLayout.tag = character.id
+        }
+
+        rowLayout.setOnClickListener {
+            var actorId: Int = it.tag as Int
+            val action = BreakingBadCharactersFragmentDirections.actionBreakingBadCharactersFragmentToBreakingBadCharacterDetailsFragment(actorId)
+            Navigation.findNavController(it).navigate(action)
         }
     }
 
     override fun getItemCount(): Int {
         return breakingBadList.size
     }
+
+
 }

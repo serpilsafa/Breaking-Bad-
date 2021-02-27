@@ -13,10 +13,17 @@
         <action
             android:id="@+id/action_breakingBadCharactersFragment_to_breakingBadCharacterDetailsFragment"
             app:destination="@id/breakingBadCharacterDetailsFragment" />
+        <argument
+            android:name="actorId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/breakingBadCharacterDetailsFragment"
         android:name="com.safa.breakingbad.view.BreakingBadCharacterDetailsFragment"
         android:label="fragment_breaking_bad_character_details"
-        tools:layout="@layout/fragment_breaking_bad_character_details" />
+        tools:layout="@layout/fragment_breaking_bad_character_details" >
+        <argument
+            android:name="actorId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

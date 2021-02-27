@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.bumptech.glide.RequestManager
 import com.safa.breakingbad.adapter.BreakingBadAdapter
+import com.safa.breakingbad.data.BreakingBadDB
 import javax.inject.Inject
 
 class BreakingBadFragmentFactory @Inject constructor(
