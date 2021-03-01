@@ -13,20 +13,6 @@ class BreakingBadRepository @Inject constructor(
     private val retrofitApi: ActorRetrofitAPI
 ): BreakingBadRepositoryInterface {
 
-    override suspend fun getBreakingBadFromApi(): Resource<Actor> {
-        return try {
-            val response = retrofitApi.getActor()
-            if (response.isSuccessful){
-                response.body()?.let {
-                    return@let Resource.success(it)
-                }?: Resource.error("Error", null)
-            }else{
-                Resource.error("Response is not success", null)
-            }
-        }catch (e:Exception){
-            Resource.error("No Data!", null)
-        }
-    }
 
     override suspend fun getList(): ArrayList<Actor> {
 

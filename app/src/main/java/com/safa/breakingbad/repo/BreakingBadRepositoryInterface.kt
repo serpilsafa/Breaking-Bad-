@@ -6,8 +6,6 @@ import com.safa.breakingbad.utility.Resource
 
 interface BreakingBadRepositoryInterface {
 
-    suspend fun getBreakingBadFromApi(): Resource<Actor>
-
     suspend fun getList(): ArrayList<Actor>
 
 }
